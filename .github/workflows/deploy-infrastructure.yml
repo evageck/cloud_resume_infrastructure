@@ -16,28 +16,27 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: us-east-1
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        - name: Set Up Terraform 
-          uses: hashicorp/setup-terraform@v1 
-          with:
+      - name: Set Up Terraform 
+        uses: hashicorp/setup-terraform@v1 
+        with:
             terraform_version: 1.9.8
           
-        - name: Terraform Init
-          working-directory: ./terraform
-          run: terraform init
+      - name: Terraform Init
+        working-directory: ./terraform
+        run: terraform init
 
-        - name: Terraform Validate
-          working-directory: ./terraform
-          run: terraform validate
+      - name: Terraform Validate
+        working-directory: ./terraform
+        run: terraform validate
 
-        - name: Terraform Plan
-          working-directory: ./terraform
-          run: terraformm plan
+      - name: Terraform Plan
+        working-directory: ./terraform
+        run: terraform plan
 
-        - name: Terraform Apply
-          working-directory: ./terraform
-          run: terraform apply -auto-approve
-          
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: terraform apply -auto-approve
