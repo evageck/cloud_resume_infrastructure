@@ -5,6 +5,13 @@ terraform {
       version = "5.74.0"
     }
   }
+
+  # Configure the backend to store the Terraform state file in an S3 bucket 
+  backend "s3" {
+    bucket = "terraform-state-eva-geck"
+    key = "terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
